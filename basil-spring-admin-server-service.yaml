@@ -1,0 +1,18 @@
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+apiVersion: v1
+kind: Service
+metadata:
+  name: basil-spring-admin-server-service
+  labels:
+    app.docker.io/name: basil-spring-admin-server-svc
+    app.docker.io/component: basil-spring-admin-server-svc
+spec:
+  type: NodePort
+  ports:
+  - name: http 
+    port: 8765
+    targetPort: 8765
+    nodePort: 30081
+    protocol: TCP 
+  selector:
+    component: base-spring-admin    

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basil-spring-admin-server-deployment
+  labels:
+    app.docker.io/name: basil-spring-admin-server-dep
+    app.docker.io/component: basil-spring-admin-server-dep
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: base-spring-admin
+  template:
+    metadata:
+      labels:
+        app: base-spring-admin
+    spec:
+      containers:
+      - name: base-spring-admin-container
+        image: basiljereh/basil.base-spring-admin:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 300Mi
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8765       
